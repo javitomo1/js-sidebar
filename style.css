@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Roboto Mono";
+}
+
+/******************************************************************************************************************/
+/*************************************   Toggle Sidebar Button ****************************************************/
+
+/*Configuracion de la apariencia del boton para abrir el menu lateral*/
+/*Animacion del boton*/
+@keyframes sidebar_toggle_button {
+    0% {
+        font-size: 2.5em;
+    }
+    100% {
+        font-size: 3em;
+    }
+}
+/*Contenedor del boton*/
+.sidebar-toggle {
+    background: #fff;
+    border: none;
+    width: 50px;/*Ancho del contenedor*/
+    height: 50px;/*Altura del contenedor*/
+    position: fixed;/*Establece la posicion*/
+    top: 20px;/*coordenadas de la posicion*/
+    right: 20px;/*coordenadas de la posicion*/
+}
+/*Boton*/
+.fa-bars {
+    color: rgb(98, 163, 206);
+    background: #fff;
+    animation-name: sidebar_toggle_button;/*Nombre del keyframes utilizado*/
+    animation-duration: 1s;/*Duracion de la animacion*/
+    animation-iteration-count: infinite;/*Bucle de la animacion*/
+    animation-direction: alternate;/*Alterna la animacion del 0% al 100% y vuelve del 100% al 0%*/
+}
+/******************************************************************************************************************/
+/*************************************   Sidebar Container  *******************************************************/
+
+/*Consfiguracion del aside con clase sidebar*/
+.sidebar {
+    position: fixed;/*Posiciona el sidebar*/
+    top: 0;/*Coordenadas de del posicionamiento*/
+    left: 0;/*Coordenadas de del posicionamiento*/
+    width: 100%;/*Ancho del sidebar*/
+    height: 100%;/*Altura del sidebar*/
+    background: whitesmoke;
+    display: grid;/*Establecemos rejilla para tener 3 celdas*/
+    grid-template-rows: auto 1fr auto;/*La celda 1 y 3 tienen medidas auto, se ajustan al contenido*/
+    row-gap: 1rem;/*Medida de separacion de las celdas*/
+    transform: translate(-100%);/*Propiedad para esconder el sidebar*/
+    transition: 1s;
+}
+/*Clase que se añade al sidebar con javascript para aplicar la propiedad*/
+.show-sidebar {
+    transform: translate(0);/*Propiedad para mostrar el sidebar*/
+}
+@media screen and (min-width: 676px) {
+    .sidebar {
+        width: 400px;/*Medida del ancho del sidebar cuando la pantalla es mas grande de 676px*/
+    }
+}
+/******************************************************************************************************************/
+/************************************  Sidebar Header Container  **************************************************/
+/*Configuracion del contenedor del sidebar-header*/
+.sidebar-header {
+    position: relative;/*Propiedad para posicionar el boton de cerrar el sidebar*/
+    height: 80px;/*Altura del contenedor del header del sidebar*/
+}
+/******************************************************************************************************************/
+/*Configuracion del titulo h4 del sidebar*/
+.sidebar-header > h4 {
+    display: inline-block;/*Se aplica para que .close-btn se posicione a la derecha del h4*/
+    font-size: 2em;
+    line-height: 80px;/*Propiedad para centrar el h4 verticanmente*/
+    margin-left: 20px;/*Margen izquierdo del h4 dentro del sidebar*/
+}
+/******************************************************************************************************************/
+/*Configuracion del boton para cerrar el sidebar con clase close-btn*/
+.close-btn {
+    position: absolute;/*Propiedad para poder posicionar el boton*/
+    right: 20px;/*Coordenadas de del posicionamiento*/
+    top: 20px;/*Coordenadas de del posicionamiento*/
+    height: 40px;/*Altura del boton*/
+    width: 40px;/*Anchura del boton*/
+    font-size: 2em;
+    border: none;
+    background: whitesmoke;
+    color: rgb(175, 0, 0);
+    transition-duration: 0.3s;/*Duracion de la transicion con pseudoclase active*/
+}
+.close-btn:active {
+    transform: rotate(180deg);/*Tranform de rotacion cuando pulsamos el boton*/
+}
+/******************************************************************************************************************/
+/***********************************  Configuracion de los enlaces dentro de ul.links > li > a  *******************/
+.links > li > a {
+    color: #636363;
+    text-decoration: none;
+    text-transform: capitalize;/*Establece en mayusculas la primera letra*/
+    width: 100%;/*Tamaño del contenedor del link*/
+    font-size: 1.6em;
+    padding-left: 20px;/*Margen izquierdo de los links*/
+}
+.links > li {
+    height: 60px;/*Altura del contenedor del link li para separar verticalmente los links*/
+}
+/******************************************************************************************************************/
+/******************************************************************************************************************/
+.social-icons {
+    text-align: center;
+}
+.social-icons > li {
+    display: inline-block;
+    margin: 10px 10px;
+}
+.social-icons > li > a > i {
+    color: #1da1f2;
+    font-size: 1.5em;
+}
